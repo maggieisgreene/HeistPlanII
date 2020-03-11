@@ -5,6 +5,7 @@ namespace HeistPlanII
   public class Hacker : IRobber
   {
     public string Name { get; set; }
+    public string Specialty { get; set; } = "Hacker";
     public int SkillLevel { get; set; }
     public int PercentageCut { get; set; }
 

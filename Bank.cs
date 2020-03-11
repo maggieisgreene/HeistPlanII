@@ -21,6 +21,17 @@ namespace HeistPlanII
       }
     }
 
+    public int MostSecure
+    {
+      get
+      {
+        List<int> AllSecurity = new List<int>() { AlarmScore, VaultScore, SecurityGuardScore };
+        IEnumerable<int> Security = AllSecurity.OrderByDescending(number => number);
+
+        return Security.FirstOrDefault();
+      }
+    }
+
     public bool IsSecure
     {
       get
