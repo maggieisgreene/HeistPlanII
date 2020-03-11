@@ -101,6 +101,22 @@ namespace HeistPlanII
             {
                 Console.WriteLine($"{robber.Name} is on board with this mission and has a skill level of {robber.SkillLevel}!");
             }
+
+            Random random = new Random();
+
+            var alarm = random.Next(0, 101);
+            var vault = random.Next(0, 101);
+            var security = random.Next(0, 101);
+            var cash = random.Next(50000, 1000000);
+
+            var bank = new Bank()
+            {
+                AlarmScore = alarm,
+                VaultScore = vault,
+                SecurityGuardScore = security,
+                CashOnHand = cash
+            };
+
         }
     }
 }

@@ -1,3 +1,6 @@
+using System.Collections.Generic;
+using System.Linq;
+
 namespace HeistPlanII
 {
   public class Bank
@@ -6,6 +9,18 @@ namespace HeistPlanII
     public int AlarmScore { get; set; }
     public int VaultScore { get; set; }
     public int SecurityGuardScore { get; set; }
+
+    public int LeastSecure
+    {
+      get
+      {
+        List<int> AllSecurity = new List<int>() { AlarmScore, VaultScore, SecurityGuardScore };
+        IEnumerable<int> Insecurity = AllSecurity.OrderBy(number => number);
+
+        return Insecurity.FirstOrDefault();
+      }
+    }
+
     public bool IsSecure
     {
       get
