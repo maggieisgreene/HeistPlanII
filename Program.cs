@@ -77,7 +77,7 @@ namespace HeistPlanII
                             PercentageCut = cut,
                     });
                 }
-                if (assignment.Contains("muscle"))
+                else if (assignment.Contains("muscle"))
                 {
                     rolodex.Add(new Muscle()
                     {
@@ -99,7 +99,7 @@ namespace HeistPlanII
 
             foreach (var robber in rolodex)
             {
-                Console.WriteLine($"{robber.Name} is on board with this mission and has a skill level of {robber.SkillLevel}! {robber.GetType()}");
+                Console.WriteLine($"{robber.Name} is on board with this mission and has a skill level of {robber.SkillLevel}!");
             }
         }
     }
