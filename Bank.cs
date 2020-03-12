@@ -10,28 +10,6 @@ namespace HeistPlanII
     public int VaultScore { get; set; }
     public int SecurityGuardScore { get; set; }
 
-    public int LeastSecure
-    {
-      get
-      {
-        List<int> AllSecurity = new List<int>() { AlarmScore, VaultScore, SecurityGuardScore };
-        IEnumerable<int> Insecurity = AllSecurity.OrderBy(number => number);
-
-        return Insecurity.FirstOrDefault();
-      }
-    }
-
-    public int MostSecure
-    {
-      get
-      {
-        List<int> AllSecurity = new List<int>() { AlarmScore, VaultScore, SecurityGuardScore };
-        IEnumerable<int> Security = AllSecurity.OrderByDescending(number => number);
-
-        return Security.FirstOrDefault();
-      }
-    }
-
     public bool IsSecure
     {
       get

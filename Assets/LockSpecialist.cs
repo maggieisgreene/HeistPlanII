@@ -5,7 +5,7 @@ namespace HeistPlanII
   public class LockSpecialist : IRobber
   {
     public string Name { get; set; }
-    public string Specialty { get; set; } = "Lock Specialist";
+    public string Specialty { get; set; } = "lock specialist";
     public int SkillLevel { get; set; }
     public int PercentageCut { get; set; }
     public void PerformSkill(Bank Bank)

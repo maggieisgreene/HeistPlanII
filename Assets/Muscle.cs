@@ -5,7 +5,7 @@ namespace HeistPlanII
   public class Muscle : IRobber
   {
     public string Name { get; set; }
-    public string Specialty { get; set; } = "Muscle";
+    public string Specialty { get; set; } = "muscle";
     public int SkillLevel { get; set; }
     public int PercentageCut { get; set; }
     public void PerformSkill(Bank Bank)

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace HeistPlanII
 {
@@ -109,6 +110,14 @@ namespace HeistPlanII
       var security = random.Next(0, 101);
       var cash = random.Next(50000, 1000000);
 
+      Dictionary<string, int> allScores = new Dictionary<string, int>();
+      allScores.Add("Alarm", alarm);
+      allScores.Add("Vault", vault);
+      allScores.Add("Security Guard", security);
+
+      var leastSecure = allScores.OrderBy(num => num.Value).FirstOrDefault();
+      var mostSecure = allScores.OrderByDescending(num => num.Value).FirstOrDefault();
+
       var bank = new Bank()
       {
         AlarmScore = alarm,
@@ -117,18 +126,36 @@ namespace HeistPlanII
         CashOnHand = cash
       };
 
-      Console.WriteLine("");
-      // Ask about printing name rather than integer
-      Console.WriteLine($"Least secure: {bank.LeastSecure}");
-      Console.WriteLine($"Most secure: {bank.MostSecure}");
-      Console.WriteLine("");
+      Console.WriteLine($"Least secure: {leastSecure.Key}");
+      Console.WriteLine($"Most secure: {mostSecure.Key}");
 
       foreach (var robber in rolodex)
       {
-        Console.WriteLine($"{robber.Name} is a {robber.Specialty}! Skill level is at a whopping {robber.SkillLevel} and wants {robber.PercentageCut}% of the earnings!");
+        Console.WriteLine($"{rolodex.IndexOf(robber)} | {robber.Name} is a {robber.Specialty}! Skill level is at a whopping {robber.SkillLevel} and wants {robber.PercentageCut}% of the earnings!");
       }
 
-      List<IRobber> crew = new List<IRobber>();
+      var crew = new List<IRobber>();
+      var crewPercentageCutTotal = 100;
+
+      while (true)
+      {
+        Console.WriteLine("Enter the number of the robber you'd like to include in your crew!");
+        var chosen = Console.ReadLine();
+
+        if (string.IsNullOrEmpty(chosen))
+        {
+          break;
+        }
+        else
+        {
+          var robberIndex = int.Parse(chosen);
+
+          if (robberIndex < rolodex.Count || robberIndex >= 0)
+          {
+            crew.Add(rolodex[robberIndex]);
+          }
+        }
+      }
     }
   }
 }
